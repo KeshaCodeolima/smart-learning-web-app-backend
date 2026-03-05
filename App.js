@@ -12,9 +12,11 @@ app.use(express.json());
 const Register = require('./Signup/register');
 const Login = require('./Login/login');
 const Emotion = require('./Emotion-Detection/emotion')
+const Note = require('./NoteSummaraz/notesummaraz')
 app.use('/api/users',Register);
 app.use('/api/users',Login);
 app.use('/api/users',Emotion);
+app.use('/api/users',Note)
 
 app.get('/', (req, res) => {
   res.send('Backend is running');
