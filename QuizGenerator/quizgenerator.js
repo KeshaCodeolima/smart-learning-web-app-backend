@@ -8,7 +8,7 @@ const client = new OpenAI({
 
 router.post('/quiz', async (req, res) => {
     try {
-        const { text } = req.body;
+        const { text, language } = req.body;
         const response = await client.chat.completions.create({
             model: "gpt-4.1-mini",
             messages: [
@@ -18,7 +18,7 @@ router.post('/quiz', async (req, res) => {
                 },
                 {
                     role: "user",
-                    content: `Create a quiz from the this notes and Requirement are Generate 5 multiple choice questions, Each question must have 4 options, Mark the correct answer and Return ONLY JSON in this format:
+                    content: `Create a quiz from the following notes. Generate 5 multiple choice questions. Each question must have 4 options. Mark the correct answer.Generate the quiz in this language: ${language} Return ONLY JSON in this format:
                     [
                         {
                         "question": "",
@@ -30,10 +30,12 @@ router.post('/quiz', async (req, res) => {
                     ${text}`
                 }
             ],
-            max_tokens: 500
+            max_tokens: 900
         });
 
-        const quiz = response.choices[0].message.content;
+         let quiz = response.choices[0].message.content;
+        quiz = quiz.replace(/```json|```/g, '').trim();
+
         res.json({ quiz });
 
     } catch (err) {
