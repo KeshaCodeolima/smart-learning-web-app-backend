@@ -14,6 +14,7 @@ router.post('/login', (req, res) => {
                         res.json({
                             message: 'Successful Login',
                             user: {
+                                id:user.id,
                                 username: user.username,
                                 email: user.email,
                                 name: user.name
