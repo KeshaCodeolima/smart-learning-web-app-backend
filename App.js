@@ -14,11 +14,13 @@ const Login = require('./Login/login');
 const Emotion = require('./Emotion-Detection/emotion')
 const Note = require('./NoteSummaraz/notesummaraz')
 const Quiz = require('./QuizGenerator/quizgenerator')
+const QuizSave = require('./QuizSave/quizsave')
 app.use('/api/users',Register);
 app.use('/api/users',Login);
 app.use('/api/users',Emotion);
-app.use('/api/users',Note)
+app.use('/api/users',Note);
 app.use('/api/users',Quiz);
+app.use('/api/users',QuizSave);
 
 app.get('/', (req, res) => {
   res.send('Backend is running');
