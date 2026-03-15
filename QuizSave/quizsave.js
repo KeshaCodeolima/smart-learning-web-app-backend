@@ -8,11 +8,11 @@ router.post('/save', async (req, res) => {
 
         const quiz = await Quiz.findOneAndUpdate(
             { userId: userId, topic: topic },
-            { score, totalQuestions},
+            { score, totalQuestions, saveAt: new Date() },
             { new: true, upsert: true, setDefaultsOnInsert: true }
         );
 
-        res.json({ message: "Quiz saved successfully!", quiz});
+        res.json({ message: "Quiz saved successfully!", quiz });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
