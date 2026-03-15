@@ -4,7 +4,7 @@ const Quizget = require('../DBConnection/quizsaveschema');
 
 router.get('/getdetail', async (req, res) => {
     try {
-        const { userId } = req.body;
+        const { userId } = req.query;
 
         const lastweek = new Date();
         lastweek.setDate(lastweek.getDate() - 7);
