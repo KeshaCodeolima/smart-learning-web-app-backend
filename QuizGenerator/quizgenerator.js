@@ -18,7 +18,7 @@ router.post('/quiz', async (req, res) => {
                 },
                 {
                     role: "user",
-                    content: `Create a quiz from the following notes. Generate 5 multiple choice questions. Each question must have 4 options. Mark the correct answer.Generate the quiz in this language: ${language} Return ONLY JSON in this format:
+                    content: `Create a quiz from the following notes. Generate 10 multiple choice questions. Each question must have 4 options. Mark the correct answer.Generate the quiz in this language: ${language} Return ONLY JSON in this format:
                     [
                         {
                         "question": "",
