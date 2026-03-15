@@ -4,7 +4,8 @@ const quizSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     topic: { type: String, required: true },
     score: { type: Number, required: true },
-    totalQuestions: { type: Number, required: true }
+    totalQuestions: { type: Number, required: true },
+    saveAt: { type: Date, default: Date.now }
 });
 
 const quizcollaction = mongoose.model("Quiz", quizSchema)
