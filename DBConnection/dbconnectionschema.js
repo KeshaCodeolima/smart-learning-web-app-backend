@@ -5,6 +5,8 @@ const detailSchema = new mongoose.Schema({
     email:String,
     username:String,
     password:String,
+    resetToken: String,
+    resetTokenExpire: Date
 });
 
 const collaction = mongoose.model("StudentDetails",detailSchema)
