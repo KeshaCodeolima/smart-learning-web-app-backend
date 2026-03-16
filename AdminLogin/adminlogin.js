@@ -16,6 +16,7 @@ router.post("/admin-login", async (req, res) => {
     res.json({
       message: "Admin login successful",
       admin: {
+        id:user.id,
         name: user.name,
         email: user.email
       }
