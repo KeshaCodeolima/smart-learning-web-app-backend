@@ -18,6 +18,7 @@ const QuizSave = require('./QuizSave/quizsave')
 const VideoText = require('./VideoText/videotext')
 const GetText = require('./VideoText/videotextgetting')
 const GetQuizSave = require('./Progerss-Tracking/progresstracking')
+const ResetPassword = require('./Forgot-Password/forgotpassword')
 app.use('/api/users', Register);
 app.use('/api/users', Login);
 app.use('/api/users', Emotion);
@@ -27,6 +28,7 @@ app.use('/api/users', QuizSave);
 app.use('/api/users', VideoText);
 app.use('/api/users', GetText);
 app.use('/api/users', GetQuizSave);
+app.use('/api/users', ResetPassword);
 
 app.get('/', (req, res) => {
   res.send('Backend is running');
