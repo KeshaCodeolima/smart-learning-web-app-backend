@@ -22,6 +22,7 @@ const ResetPassword = require('./Forgot-Password/forgotpassword')
 const Admin = require('./AdminLogin/adminlogin')
 const AdminPage = require('./AdminLogin/adminpagedetails')
 const DeleteUser = require('./AdminLogin/adminuserdelete')
+const EmailSend = require('./Contact/contact')
 
 app.use('/api/users', Register);
 app.use('/api/users', Login);
@@ -35,7 +36,8 @@ app.use('/api/users', GetQuizSave);
 app.use('/api/users', ResetPassword);
 app.use('/api/users', Admin);
 app.use('/api/users', AdminPage);
-app.use('/api/users', DeleteUser); 
+app.use('/api/users', DeleteUser);
+app.use('/api/users', EmailSend);
 
 app.get('/', (req, res) => {
   res.send('Backend is running');
