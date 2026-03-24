@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Transcript = require('../DBConnection/videotextschema');
-const { Language } = require('@google/genai');
 
 router.post('/text', async (req, res) => {
     try {
