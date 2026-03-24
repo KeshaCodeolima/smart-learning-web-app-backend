@@ -39,12 +39,14 @@ router.post('/upload', upload.single('video'), async (req, res) => {
             .on('end', async () => {
                 const transcription = await openai.audio.transcriptions.create({
                     file: fs.createReadStream(mp3Path),
-                    model: "whisper-1"
+                    model: "whisper-1",
+                    response_format: "verbose_json"
                 });
                 const text = transcription.text;
+                const detectedLanguage = transcription.language;
                 const updateTranscript = await Transcript.findOneAndUpdate(
                     { userId },
-                    { transcript: text, updateAt: new Date() },
+                    { transcript: text, language: detectedLanguage, updateAt: new Date() },
                     { upsert: true, new: true }
                 );
                 fs.unlink(videoPath, (err) => {
@@ -55,7 +57,8 @@ router.post('/upload', upload.single('video'), async (req, res) => {
                 });
                 res.json({
                     message: "Transcript saved and files deleted",
-                    transcript: updateTranscript
+                    transcript: updateTranscript,
+                    language: detectedLanguage,
                 });
             })
             .on('error', (err) => {
